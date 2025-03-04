@@ -1,0 +1,23 @@
+[
+    {
+      "title": "原爆ドーム",
+      "prefecture": "Hiroshima",
+      "city":"Hiroshima",
+      "image":"厳島神社.jpg",
+      "descriptionTitle":"もう一度あの頃を考える",
+      "description": "原爆ドームは広島市にある、広島平和記念公園内の世界遺産です。1945年8月6日に広島に投下された原子爆弾の爆心地近くに立っており、その悲劇的な歴史を今に伝えています。",
+      "googleMap":"https://maps.app.goo.gl/osFRuvKa24sqTwLe8",
+      "access":"広島駅から車で20分"
+    },
+    {
+      "title": "清水寺",
+      "prefecture": "京都府",
+      "description": "清水寺は京都の東山にある仏教寺院で、世界遺産に登録されています。特に「清水の舞台から飛び降りる」という言葉で有名で、観光地としても人気です。"
+    },
+    {
+      "title": "東京タワー",
+      "prefecture": "東京都",
+      "description": "東京タワーは日本の象徴的な観光名所で、東京の中心に位置し、東京の美しい景色を一望できる展望台があります。"
+    }
+  ]
+  

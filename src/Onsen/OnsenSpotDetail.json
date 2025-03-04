@@ -1,0 +1,53 @@
+{
+    "BeppuOnsen": {
+      "onsenSpot": "BeppuOnsen",
+      "prefecture":"Oita",
+      "description": "日本有数の温泉地で、地獄めぐりが有名。",
+      "surroundingArea": "別府温泉は、古くから多くの人々に親しまれてきた温泉地で、温泉の湧出量が日本一とされています。",
+      "efficacy": ["SimpleOnsen","SulfateOnsen"],
+      "access": "別府駅から車で10分ほどの距離です。",
+      "googleMap": "https://maps.app.goo.gl/8YhRBPwwU571MBRR7",
+      "image": "別府温泉.jpg"
+    },
+    "KusatuOnsen": {
+      "onsenSpot": "草津温泉",
+      "description": "日本三名泉のひとつで、湯畑が象徴的。",
+      "history": "草津温泉は、古代から名湯とされ、多くの文化人にも愛されてきました。",
+      "surroundingArea": "草津温泉の周辺には、自然豊かな山々や観光地があります。",
+      "efficacy": "皮膚病や神経痛に効果があるとされています。",
+      "access": "JR長野原草津口駅からバスで約25分。",
+      "googleMap": "https://goo.gl/maps/xxxxxxxxxxxxx",
+      "image": "草津温泉.jpg"
+    },
+    "HakoneOnsen": {
+      "onsenSpot": "箱根温泉",
+      "description": "首都圏からアクセスしやすく、多くの宿が立ち並ぶ。",
+      "history": "箱根は古くから温泉地として名高く、多くの文学作品にも登場します。",
+      "surroundingArea": "富士山や芦ノ湖など、自然景観も豊かなエリアです。",
+      "efficacy": "リラクゼーション効果が高く、疲労回復にも効果があります。",
+      "access": "新宿から特急で約1時間半、箱根湯本駅からバスでアクセス可能。",
+      "googleMap": "https://goo.gl/maps/xxxxxxxxxxxxx",
+      "image": "箱根温泉.jpg"
+    },
+    "Arimaonsen": {
+      "onsenSpot": "有馬温泉",
+      "description": "日本最古の温泉地の一つで、金泉・銀泉が有名。",
+      "history": "有馬温泉は、紀元前から温泉として知られており、歴史的な背景を持つ温泉地です。",
+      "surroundingArea": "周辺には神戸市や六甲山があり、観光スポットも多いです。",
+      "efficacy": "金泉は疲労回復、銀泉は美容効果があるとされています。",
+      "access": "神戸から車で約30分、またはJR新神戸駅からバスでアクセスできます。",
+      "googleMap": "https://goo.gl/maps/xxxxxxxxxxxxx",
+      "image": "有馬温泉.jpg"
+    },
+    "AtamiOnsen": {
+      "onsenSpot": "AtamiOnsen",
+      "description": "A famous onsen in Shizuoka...",
+      "history": "Rich history...",
+      "surroundingArea": "Shizuoka Prefecture",
+      "efficacy": ["SimpleOnsen","SulfateOnsen"],
+      "access": "By train from Tokyo...",
+      "googleMap": "https://maps.app.goo.gl/WRofuVAv5QkBAtKs7",
+      "image": "道後温泉.jpg"
+    }
+  }
+  

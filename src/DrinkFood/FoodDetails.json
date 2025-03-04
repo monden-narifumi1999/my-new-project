@@ -1,0 +1,38 @@
+[
+    {
+      "id": 1,
+      "area": "CHUGOKU",
+      "prefecture": "Hiroshima",
+      "title": "厳島神社",
+      "description": "有名な神社。",
+      "image":"厳島神社.jpg"
+    },
+    {
+      "id": 2,
+      "area": "CHUGOKU",
+      "prefecture": "Hiroshima",
+      "title": "原爆ドーム",
+      "description": "平和の象徴。"
+    },
+    {
+      "id": 3,
+      "area": "CHUGOKU",
+      "prefecture": "Hiroshima",
+      "title": "原爆ドーム",
+      "description": "平和の象徴。"
+    },
+    {
+      "id": 4,
+      "area": "CHUGOKU",
+      "prefecture": "Hiroshima",
+      "title": "原爆ドーム",
+      "description": "平和の象徴。"
+    },
+    {
+      "id": 5,
+      "area": "KANTO",
+      "prefecture": "Tokyo",
+      "title": "東京タワー",
+      "description": "東京のランドマーク。"
+    }
+  ]
