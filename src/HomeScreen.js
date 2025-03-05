@@ -1,6 +1,10 @@
 import { View, Text, StyleSheet, Image, FlatList, ScrollView, TouchableOpacity } from 'react-native';
+import React, { useState, useEffect } from 'react';
+import { useNavigation } from '@react-navigation/native';
 
 export default function HomeScreen({ navigation }) {
+  const [selectedPrefecture, setSelectedPrefecture] = useState(null); // ← 追加
+
   const bestHome = [
     {
       name: 'Ousatsu Onsen',
@@ -28,6 +32,19 @@ export default function HomeScreen({ navigation }) {
       description: 'Hakone Onsen is one of the most famous hot spring areas in Japan, known for its beautiful scenery and high-quality water.',
       image: require('../assets/草津温泉.jpg'),
     },
+  ];
+
+  const images = [
+    require('../assets/sample2.jpg'),
+    require('../assets/sample.jpg'),
+    require('../assets/厳島神社.jpg'),
+  ];
+
+  const popularareas = [
+    { title: '原爆ドーム', prefecture: 'Hiroshima', image: require('../assets/sample.jpg') },
+    { title: '厳島神社', prefecture: 'Hiroshima', image: require('../assets/sample.jpg') },
+    { title: 'CHUGOKU', prefecture: 'Hiroshima', image: require('../assets/sample.jpg') },
+    { title: '東京タワー', prefecture: 'Tokyo', image: require('../assets/sample.jpg') },
   ];
 
   const bestTravelSpot = [
@@ -62,30 +79,44 @@ export default function HomeScreen({ navigation }) {
     </View>
   );
 
+  // 観光地の遷移
+  const handleTitleSelect = (title, prefecture) => {
+    console.log(`観光スポットが選択されました: ${title}, 都道府県: ${prefecture}`);
+    setSelectedPrefecture(prefecture); // ← 修正
+    navigation.navigate('TouristSpotsExplanation', { title, prefecture });
+  };
+
+  const populaItem = ({ item }) => (
+    <TouchableOpacity
+      style={styles.popularContainer}
+      onPress={() => handleTitleSelect(item.title, item.prefecture)}
+    >
+      <Image source={item.image} style={styles.image} />
+      <Text style={styles.prefectures}>{item.title}</Text>
+    </TouchableOpacity>
+  );
+
   return (
     <ScrollView contentContainerStyle={styles.scrollContainer}>
       <View style={styles.homeScreen}>
         <View style={styles.modalOverlay} />
-        <ScrollView
-          horizontal
-          contentContainerStyle={styles.modalContent}
-        >
-          <TouchableOpacity onPress={() => navigation.navigate('TouristSpotsHome')} >
+        <ScrollView horizontal contentContainerStyle={styles.modalContent}>
+          <TouchableOpacity onPress={() => navigation.navigate('TouristSpotsHome')}>
             <Text style={styles.menuItem}>Tourist Spot</Text>
           </TouchableOpacity>
-          <TouchableOpacity onPress={() => navigation.navigate('FoodHome')} >
+          <TouchableOpacity onPress={() => navigation.navigate('FoodHome')}>
             <Text style={styles.menuItem}>Drink & Food</Text>
           </TouchableOpacity>
-          <TouchableOpacity onPress={() => navigation.navigate('OnsenHome')} >
+          <TouchableOpacity onPress={() => navigation.navigate('OnsenHome')}>
             <Text style={styles.menuItem}>Onsen</Text>
           </TouchableOpacity>
-          <TouchableOpacity onPress={() => navigation.navigate('TravelPlanHome')} >
+          <TouchableOpacity onPress={() => navigation.navigate('TravelPlanHome')}>
             <Text style={styles.menuItem}>Travel Plan</Text>
           </TouchableOpacity>
-          <TouchableOpacity onPress={() => navigation.navigate('Contact')} >
+          <TouchableOpacity onPress={() => navigation.navigate('Contact')}>
             <Text style={styles.menuItem}>Contact</Text>
           </TouchableOpacity>
-          <TouchableOpacity onPress={() => navigation.navigate('PrefectureHome')} >
+          <TouchableOpacity onPress={() => navigation.navigate('PrefectureHome')}>
             <Text style={styles.menuItem}>Prefecture</Text>
           </TouchableOpacity>
         </ScrollView>
@@ -94,8 +125,8 @@ export default function HomeScreen({ navigation }) {
           data={bestHome}
           renderItem={bestHomeItem}
           keyExtractor={(item) => item.name}
-          horizontal // これを追加して横スクロールを有効にする
-          scrollEnabled={true} // 横スクロールを有効にする
+          horizontal
+          scrollEnabled={true}
           contentContainerStyle={styles.listContainer}
         />
         <Text style={styles.title}>Topic</Text>
@@ -104,23 +135,15 @@ export default function HomeScreen({ navigation }) {
           renderItem={renderItem}
           keyExtractor={(item) => item.name}
           numColumns={2}
-          scrollEnabled={false} // FlatList のスクロールを無効化
-          contentContainerStyle={styles.listContainer}
-        />
-        <FlatList
-          data={topic}
-          renderItem={renderItem}
-          keyExtractor={(item) => item.name}
-          numColumns={2}
-          scrollEnabled={false} // FlatList のスクロールを無効化
+          scrollEnabled={false}
           contentContainerStyle={styles.listContainer}
         />
         <Text style={styles.title}>Best Travel Spots</Text>
         <FlatList
-          data={bestTravelSpot}
-          renderItem={renderItem}
-          keyExtractor={(item) => item.name}
-          scrollEnabled={false} // FlatList のスクロールを無効化
+          data={popularareas}
+          renderItem={populaItem}
+          keyExtractor={(item) => item.title}
+          horizontal
           contentContainerStyle={styles.listContainer}
         />
       </View>
@@ -179,16 +202,6 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     paddingVertical: 20,
     alignItems: 'center',
-  },
-  closeButton: {
-    position: 'absolute',
-    top: 10,
-    right: 10,
-    zIndex: 1,
-  },
-  closeText: {
-    fontSize: 30,
-    color: 'black',
   },
   menuItem: {
     fontSize: 18,
