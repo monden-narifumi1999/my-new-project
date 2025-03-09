@@ -5,6 +5,13 @@ import { useNavigation } from '@react-navigation/native';
 const OnsenHome = () => {
   const navigation = useNavigation();
 
+  const onsenScroll = [
+    { title: 'A', image: require('../../assets/sample.jpg') },
+    { title: 'B', image: require('../../assets/sample.jpg') },
+    { title: 'C', image: require('../../assets/sample.jpg') },
+    { title: 'D', image: require('../../assets/sample.jpg') },
+    { title: 'E', image: require('../../assets/sample.jpg') }];
+
   const bestOnsenSpot = [
     { name: 'KYUSHU', prefectures: 'Oita', onsenSpot: 'BeppuOnsen', image: require('../../assets/sample.jpg') },
     { name: 'KANTO', prefectures: 'Gunma', onsenSpot: 'KusatuOnsen', image: require('../../assets/sample.jpg') },
@@ -28,6 +35,11 @@ const OnsenHome = () => {
 
 
   // 温泉スポット選択時の遷移処理
+
+  const handleOnsenScrollSelect = (onsenSpot) => {
+    navigation.navigate('OnsenSpotDetail', { title }); // onsenSpotをパラメータとして渡して遷移
+  };
+
   const handleOnsenSpotSelect = (onsenSpot) => {
     navigation.navigate('OnsenSpotDetail', { onsenSpot }); // onsenSpotをパラメータとして渡して遷移
   };
@@ -36,6 +48,13 @@ const OnsenHome = () => {
     navigation.navigate('OnsenEfficacyDetail', {efficacyName}); 
   };
   
+  const onsenSpotScrollItem = ({ item }) => (
+    <TouchableOpacity style={styles.bestOnsenSpotContainer} onPress={() => handleOnsenScrollSelect(item.title)}>
+      <Image source={item.image} style={styles.image} />
+      <Text style={styles.prefectures}>{item.title}</Text>
+  
+    </TouchableOpacity>
+  );
 
   const bestOnsenSpotItem = ({ item }) => (
     <TouchableOpacity style={styles.bestOnsenSpotContainer} onPress={() => handleOnsenSpotSelect(item.onsenSpot)}>
@@ -55,7 +74,19 @@ const OnsenHome = () => {
   return (
     <ScrollView style={styles.container}>
       <Text style={styles.title}>Japan's Best Onsens Guide</Text>
-      <Image source={require('../../assets/温泉home.png')} style={styles.image} />
+      {/*変更したい*/}
+      {/*<Image source={require('../../assets/温泉home.png')} style={styles.image} /> */}
+      <View style={styles.bestOnsenSpot}>
+        <FlatList
+          data={onsenScroll}
+          renderItem={onsenSpotScrollItem}
+          keyExtractor={(item) => item.title}
+          horizontal
+          scrollEnabled
+          contentContainerStyle={styles.listContainer}
+        />
+      </View>
+      {/*変更したい*/}
       <Text style={styles.description}>Explore the most relaxing hot springs across Japan.</Text>
 
       <View style={styles.storyContainer}>
