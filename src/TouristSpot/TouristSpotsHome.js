@@ -5,6 +5,7 @@ import { useNavigation } from '@react-navigation/native';
 
 const TouristSpotsHome = () => {
   const [selectedPrefecture, setSelectedPrefecture] = useState(null);
+  const [selectedTitle, setSelectedTitle] = useState(null);
   const [currentIndex, setCurrentIndex] = useState(0);
   const navigation = useNavigation();
 
@@ -12,6 +13,10 @@ const TouristSpotsHome = () => {
     require('../../assets/sample2.jpg'),
     require('../../assets/sample.jpg'),
     require('../../assets/厳島神社.jpg'),
+  ];
+
+  const topics = [
+    { title: 'KANTO', image: require('../../assets/sample.jpg') },
   ];
 
   const areas = [
@@ -36,6 +41,11 @@ const TouristSpotsHome = () => {
     setCurrentIndex((prevIndex) => (prevIndex - 1 + images.length) % images.length);
   };
 
+  const handleTopicsSelect = (title) => {
+    setSelectedTitle(title);
+    navigation.navigate('TouristSpotTopics', { title });
+  };
+
   const handlePrefectureSelect = (prefecture) => {
     setSelectedPrefecture(prefecture);
     navigation.navigate('TouristSpotsDetail', { prefecture });
@@ -54,6 +64,13 @@ const TouristSpotsHome = () => {
     return () => clearInterval(interval);
   }, []);
 
+  const titleItem = ({ item }) => (
+    <TouchableOpacity style={styles.topicsContainer} onPress={() => handleTopicsSelect(item.title)}>
+      <Image source={item.image} style={styles.image} />
+      <Text style={styles.title}>{item.title}</Text>
+    </TouchableOpacity>
+  );
+
   const ereaItem = ({ item }) => (
     <TouchableOpacity style={styles.ereaContainer} onPress={() => handlePrefectureSelect(item.prefectures)}>
       <Image source={item.image} style={styles.image} />
@@ -70,17 +87,18 @@ const TouristSpotsHome = () => {
       <Text style={styles.prefectures}>{item.title}</Text>
     </TouchableOpacity>
   );
-  
+
 
   return (
     <ScrollView contentContainerStyle={styles.container}>
-    
+
       <Text style={styles.title}>日本のどこに行きたい？</Text>
       <View style={styles.slideshowContainer}>
         <TouchableOpacity style={styles.arrowButtonLeft} onPress={handlePrev}>
           <Text style={styles.arrowText}>◀</Text>
         </TouchableOpacity>
-        <Image source={images[currentIndex]} style={styles.slideshowImage} />
+        { /*<Image source={images[currentIndex]} style={styles.slideshowImage} />*/}
+        <FlatList data={topics} renderItem={titleItem} keyExtractor={(item) => item.title} horizontal contentContainerStyle={styles.listContainer} />
         <TouchableOpacity style={styles.arrowButtonRight} onPress={handleNext}>
           <Text style={styles.arrowText}>▶</Text>
         </TouchableOpacity>

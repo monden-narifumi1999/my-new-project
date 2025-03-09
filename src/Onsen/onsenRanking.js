@@ -1,11 +1,12 @@
 import React from 'react';
-import {  View, Text, StyleSheet, SafeAreaView, FlatList, Image} from 'react-native';
+import { View, Text, StyleSheet, SafeAreaView, FlatList, Image, Button } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 
 export default function OnsenRanking() {
   const ranking = [
     {
       rank: 1,
-      name: 'Kusatsu Onsen',
+      onsenSpot: 'Kusatsu Onsen',
       location: 'Gunma Prefecture',
       description: 'Kusatsu Onsen is frequently ranked as the No.1 hot spring in Japan, especially in the Nippon Onsen 100 Selection.',
       highlights: [
@@ -17,7 +18,7 @@ export default function OnsenRanking() {
     },
     {
       rank: 2,
-      name: 'Kurokawa Onsen',
+      onsenSpot: 'Kurokawa Onsen',
       location: 'Kumamoto Prefecture',
       description: 'A serene, nature-surrounded hot spring town, ideal for relaxation.',
       highlights: [
@@ -29,7 +30,7 @@ export default function OnsenRanking() {
     },
     {
       rank: 3,
-      name: 'Ginzan Onsen',
+      onsenSpot: 'Ginzan Onsen',
       location: 'Yamagata Prefecture',
       description: 'Famous for its Taisho-era wooden buildings, creating a nostalgic and picturesque hot spring town.',
       highlights: [
@@ -41,7 +42,7 @@ export default function OnsenRanking() {
     },
     {
       rank: 4,
-      name: 'Dogo Onsen',
+      onsenSpot: 'Dogo Onsen',
       location: 'Ehime Prefecture',
       description: 'One of Japan’s oldest hot springs, with over 3,000 years of history.',
       highlights: [
@@ -53,7 +54,7 @@ export default function OnsenRanking() {
     },
     {
       rank: 5,
-      name: 'Beppu Onsen',
+      onsenSpot: 'BeppuOnsen',
       location: 'Oita Prefecture',
       description: 'Japan’s top hot spring resort in terms of hot water volume and number of sources.',
       highlights: [
@@ -65,18 +66,23 @@ export default function OnsenRanking() {
     },
   ];
 
+  const navigation = useNavigation(); // 追加
+
+
   const renderItem = ({ item }) => (
     <View style={styles.onsenContainer}>
       <Image source={item.image} style={styles.image} />
-      <Text style={styles.onsenName}>{item.name}</Text>
+      <Text style={styles.onsenName}>{item.onsenSpot}</Text>
       <Text style={styles.location}>{item.location}</Text>
       <Text style={styles.description}>{item.description}</Text>
       <Text style={styles.highlightsTitle}>Highlights:</Text>
       {item.highlights.map((highlight, index) => (
-        <Text key={index} style={styles.highlight}>
-          - {highlight}
-        </Text>
+        <Text key={index} style={styles.highlight}>- {highlight}</Text>
       ))}
+      <Button
+        title="View Details"
+        onPress={() => navigation.navigate('OnsenSpotDetail', { onsenSpot: item.onsenSpot })}
+      />
     </View>
   );
 

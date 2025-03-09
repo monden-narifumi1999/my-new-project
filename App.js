@@ -3,12 +3,15 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { StyleSheet, View, SafeAreaView } from 'react-native';
 import HomeScreen from './src/HomeScreen';
+import HomeTopic from './src/HomeTopic';
+import HomeScroll from './src/HomeScroll';
 import Mentenance from './src/メンテナンス';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import TouristSpotsHome from './src/TouristSpot/TouristSpotsHome';
 import TouristSpotsDetail from './src/TouristSpot/TouristSpotsDetail';
 import TouristSpotsExplanation from './src/TouristSpot/TouristSpotsExplanation';
+import TouristSpotTopics from './src/TouristSpot/TouristSpotTopics';
 import FoodHome from './src/DrinkFood/FoodHome';
 import OnsenHome from './src/Onsen/onsenHome';
 import OnsenFun from './src/Onsen/Fun';
@@ -40,9 +43,12 @@ export default function App() {
             screenOptions={{ headerShown: false }} // ヘッダーを非表示
           >
             <Stack.Screen name="Home" component={HomeScreen} />
+            <Stack.Screen name="HomeTopic" component={HomeTopic} />
+            <Stack.Screen name="HomeScroll" component={HomeScroll} />
             <Stack.Screen name="TouristSpotsHome" component={TouristSpotsHome} />
             <Stack.Screen name="TouristSpotsDetail" component={TouristSpotsDetail} />
             <Stack.Screen name="TouristSpotsExplanation" component={TouristSpotsExplanation} />
+            <Stack.Screen name="TouristSpotTopics" component={TouristSpotTopics} />
             <Stack.Screen name="FoodHome" component={FoodHome} />
             <Stack.Screen name="FoodDetail" component={FoodDetail} />
             <Stack.Screen name="OnsenHome" component={OnsenHome} />

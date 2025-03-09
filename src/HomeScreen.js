@@ -4,10 +4,12 @@ import { useNavigation } from '@react-navigation/native';
 
 export default function HomeScreen({ navigation }) {
   const [selectedPrefecture, setSelectedPrefecture] = useState(null); // ← 追加
+  const [selectedTitle, setSelectedTitle] = useState(null);
+  const [selectedHome, setSelectedHome] = useState(null);
 
   const bestHome = [
     {
-      name: 'Ousatsu Onsen',
+      name: 'Kusatsu Onsen',
       location: 'Gunma Prefecture',
       description: 'Kusatsu Onsen is frequently ranked as the No.1 hot spring in Japan, especially in the Nippon Onsen 100 Selection.',
       image: require('../assets/厳島神社.jpg'),
@@ -62,21 +64,38 @@ export default function HomeScreen({ navigation }) {
     },
   ];
 
+  // HomeScrollの遷移
+  const handleHomeSelect = (name) => {
+    console.log(`観光スポットが選択されました: ${name}`);
+    setSelectedHome(name);
+    navigation.navigate('HomeScroll', { name });
+  };
+
   const bestHomeItem = ({ item }) => (
-    <View style={styles.onsenContainer}>
+    <TouchableOpacity
+      style={styles.popularContainer}
+      onPress={() => handleHomeSelect(item.name)}
+    >
       <Image source={item.image} style={styles.image} />
-      <Text style={styles.onsenName}>{item.name}</Text>
-      <Text style={styles.location}>{item.location}</Text>
-    </View>
+      <Text style={styles.prefectures}>{item.name}</Text>
+    </TouchableOpacity>
   );
 
+  // 観光地の遷移
+  const handleTopicSelect = (name) => {
+    console.log(`観光スポットが選択されました: ${name}`);
+    setSelectedTitle(name);
+    navigation.navigate('HomeTopic', { name });
+  };
+
   const renderItem = ({ item }) => (
-    <View style={styles.onsenContainer}>
+    <TouchableOpacity
+      style={styles.popularContainer}
+      onPress={() => handleTopicSelect(item.name)}
+    >
       <Image source={item.image} style={styles.image} />
-      <Text style={styles.onsenName}>{item.name}</Text>
-      <Text style={styles.location}>{item.location}</Text>
-      <Text style={styles.description}>{item.description}</Text>
-    </View>
+      <Text style={styles.prefectures}>{item.name}</Text>
+    </TouchableOpacity>
   );
 
   // 観光地の遷移
