@@ -43,6 +43,9 @@ export default function Header() {
           <TouchableOpacity onPress={() => { setMenuOpen(false); navigation.navigate('PrefectureHome'); }}>
             <Text style={styles.menuItem}>Prefecture</Text>
           </TouchableOpacity>
+          <TouchableOpacity onPress={() => { setMenuOpen(false); navigation.navigate('scheduleHome'); }}>
+            <Text style={styles.menuItem}>My Schedule</Text>
+          </TouchableOpacity>
         </View>
       </Modal>
     </View>

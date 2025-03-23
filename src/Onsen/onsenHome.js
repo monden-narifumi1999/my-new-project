@@ -16,7 +16,7 @@ const OnsenHome = () => {
     { name: 'KYUSHU', prefectures: 'Oita', onsenSpot: 'BeppuOnsen', image: require('../../assets/sample.jpg') },
     { name: 'KANTO', prefectures: 'Gunma', onsenSpot: 'KusatuOnsen', image: require('../../assets/sample.jpg') },
     { name: 'KANTO', prefectures: 'Kanagawa', onsenSpot: 'HakoneOnsen', image: require('../../assets/sample.jpg') },
-    { name: 'KANSAI', prefectures: 'Hyogo', onsenSpot: 'Arimaonsen', image: require('../../assets/sample.jpg') },
+    { name: 'KANSAI', prefectures: 'Hyogo', onsenSpot: 'ArimaOnsen', image: require('../../assets/sample.jpg') },
   ];
 
   const efficacy = [
@@ -30,6 +30,10 @@ const OnsenHome = () => {
     { efficacyName: 'AcidicOnsen', description: 'This onsen has strong antibacterial properties and is effective for treating skin issues such as acne and eczema. However, it may be too harsh for sensitive skin, so caution is advised.' }, // Acidic Onsen
     { efficacyName: 'CarbonatedOnsen', description: 'Containing carbon dioxide, this onsen offers excellent blood circulation benefits. The bubbles envelop your body, improving blood flow and helping to relieve fatigue and muscle pain. It’s highly effective for relaxation and recovery.' }, // Carbonated Onsen
     { efficacyName: 'IodineOnsen', description: 'This onsen contains iodine, offering strong moisturizing effects. It is excellent for treating dry skin and skin conditions such as eczema and atopic dermatitis, leaving the skin soft and hydrated.' }, // Iodine Onsen
+    { efficacyName: 'SodiumOnsen', description: 'This onsen has a pH value of 8.5 or higher, known for its excellent cleansing and beautifying effects. It removes dead skin cells, leaving the skin smooth and radiant. Ideal for those seeking skincare benefits and relaxation.' }, 
+    { efficacyName: 'AlkalineSimpleOnsen', description: 'This onsen is rich in sodium ions, known for its strong moisturizing and heat-retaining properties. It helps alleviate joint pain, muscle fatigue, and improves blood circulation, making it ideal for those suffering from cold sensitivity or dry skin.' },
+     
+  
   ];
 
 

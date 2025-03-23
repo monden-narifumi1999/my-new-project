@@ -25,6 +25,7 @@ import OnsenSpotDetail from './src/Onsen/OnsenSpotDetail';
 import PrefectureHome from './src/Prefecture/PrefectureHome';
 import HiroshimaPrefecture from './src/Prefecture/HiroshimaPrefecture';
 import AreaDetail from './src/another/AreaDetail';
+import scheduleHome from './src/Schedule/scheduleHome';
 
 
 
@@ -64,9 +65,10 @@ export default function App() {
             <Stack.Screen name="OnsenManners" component={OnsenManners} />
             <Stack.Screen name="OnsenRanking" component={OnsenRanking} />
             <Stack.Screen name="AreaDetail" component={AreaDetail} />
+            <Stack.Screen name="scheduleHome" component={scheduleHome} />
           </Stack.Navigator>
         </View>
-        <Footer />
+          <Footer />
         <StatusBar style="auto" />
       </SafeAreaView>
     </NavigationContainer>
